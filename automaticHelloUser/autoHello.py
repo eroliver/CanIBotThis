@@ -1,25 +1,58 @@
-import subprocess
+from random import random
+from pyautogui import write, press, keyDown, keyUp, hotkey
+from os import getcwd, path
+from time import sleep
+from random import randint
+from config import *
 
+path = getcwd()
+bashPath = path.replace("\\", "/")
+botName = botNames[(randint(0,(len(botNames) - 1)))]
 
-file = open("helloTest.py", "w")
-file.close()
+def goToFolder():
+    hotkey('win', 'e')
+    hotkey('alt', 'd')
+    write(path, interval=0.01)
+    press('enter')
 
-file = open("helloTest.py", "a")
-file.write("def helloUser():\n")
-file.write("\tname = input('What is your name? ')\n")
-file.write("\tprint(f'Hello, {name}')\n\n")
+def openBashHere():
+    hotkey('shift', 'f10')
+    press('s')
+    press('enter')
 
-file.write("if __name__ == '__main__':\n")
-file.write("\thelloUser()\n")
+def echoOverwrite(text: str):
+    write(f"echo {text} > botHello.py", interval=0.02)
+    press('enter')
 
+goToFolder()
+openBashHere()
+echoOverwrite("")
 
-file.close()
+write(f'code {helloFileName}', interval=0.02)
+press('enter')
 
-#if __name__ == '__main__':
-#    # Script2.py executed as script
-#    # do something
-#    func1()
+sleep(3)
 
-subprocess.run("helloTest.py", shell=True)
+write('name = input("What is your name? ")\n')
+write('print(f"Hello, {name}")\n')
 
-print("Does this run before subprocess finishes?")
+sleep(3)
+
+hotkey('ctrl', 's')
+
+sleep(1)
+
+goToFolder()
+openBashHere()
+
+sleep(1)
+
+write(f'py {helloFileName}')
+
+press('enter')
+
+sleep(1)
+
+write(f'{ botName }', interval=0.5)
+
+press('enter')
