@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 opencv-python = "*"
 pyautogui = "*"
+selenium = "*"
+chromedriver-py = "*"
 
 [dev-packages]
 
