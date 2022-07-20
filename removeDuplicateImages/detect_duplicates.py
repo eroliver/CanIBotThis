@@ -1,20 +1,14 @@
-from PIL import Image, ImageChops
+from difPy import dif
+from os import rename, walk, path
 
-def compare_images(path_one, path_two):
-    """
-    compare images
-    :param path_one: first image
-    :param path_two: second image
-    :return: same is True, otherwise is False
-    """
-    image_one = Image.open(path_one)
-    image_two = Image.open(path_two)
-    try:
-        diff = ImageChops.difference(image_one, image_two)
-        if diff.getbbox() is None:
-            # same
-            return True
-        else:
-            return False
-    except ValueError as e:
-        return False
+#search = dif('L:\\Amandas phone\\Iphone\\100APPLE\\', similarity='high')
+#print(search.lower_quality)
+
+
+parentDir ='L:\\Amandas phone\\Iphone'
+
+for root, dirs, files in walk(parentDir):
+    for dir in dirs:
+        currentDir = path.join(root, dir)
+        dif(currentDir, delete=True, silent_del=True)
+
