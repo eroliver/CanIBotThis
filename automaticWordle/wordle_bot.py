@@ -51,6 +51,9 @@ def main():
             for position in not_in_position:
                 if word[not_in_position.index(position)] in position:
                     bad = True
+                for letter in position:
+                        if letter not in word:
+                            bad = True
             if not bad:
                 better_words.append(word)
         not_in_position = [set(), set(), set(), set(), set()]
