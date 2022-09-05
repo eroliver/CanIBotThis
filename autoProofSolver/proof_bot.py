@@ -5,16 +5,56 @@
 # there may be a type well suited to this all reay, or I could use a list of numbers + operators to hold the results
 # The print and return values should be seperated; after printing if 
 
-from itertools import combinations
+from itertools import combinations, permutations
 
-cards = [1, 2, 3, 4]
+cards = [1, 2, 3, 4, 5, 6]
 
 def pair_sum(some_numbers):
     pairs = list(combinations(some_numbers, 2))
     for pair in pairs:
+        # Copy list of cards, so that no duplicates are used.
         temp_cards = some_numbers.copy()
+        # Remove the cards being used as inputs.
         temp_cards.remove(pair[0])
         temp_cards.remove(pair[1])
-        print(temp_cards)
+        if ( pair[0] + pair[1] ) in temp_cards:
+            print(f"{pair[0]} + {pair[1]} = {pair[0] + pair[1]}")
+
+
+def pair_dif(some_numbers):
+    pairs = list(permutations(some_numbers, 2))
+    for pair in pairs:
+        # Copy list of cards, so that no duplicates are used.
+        temp_cards = some_numbers.copy()
+        # Remove the cards being used as inputs.
+        temp_cards.remove(pair[0])
+        temp_cards.remove(pair[1])
+        if ( pair[0] - pair[1] ) in temp_cards:
+            print(f"{pair[0]} - {pair[1]} = {pair[0] - pair[1]}")
+
+def pair_product(some_numbers):
+    pairs = list(combinations(some_numbers, 2))
+    for pair in pairs:
+        # Copy list of cards, so that no duplicates are used.
+        temp_cards = some_numbers.copy()
+        # Remove the cards being used as inputs.
+        temp_cards.remove(pair[0])
+        temp_cards.remove(pair[1])
+        if ( pair[0] * pair[1] ) in temp_cards:
+            print(f"{pair[0]} x {pair[1]} = {pair[0] * pair[1]}")
+
+def pair_quotient(some_numbers):
+    pairs = list(permutations(some_numbers, 2))
+    for pair in pairs:
+        # Copy list of cards, so that no duplicates are used.
+        temp_cards = some_numbers.copy()
+        # Remove the cards being used as inputs.
+        temp_cards.remove(pair[0])
+        temp_cards.remove(pair[1])
+        if ( pair[0] / pair[1] ) in temp_cards:
+            print(f"{pair[0]} / {pair[1]} = { int(pair[0] / pair[1])}")
 
 pair_sum(cards)
+pair_dif(cards)
+pair_product(cards)
+pair_quotient(cards)
