@@ -8,6 +8,7 @@ opencv-python = "*"
 pyautogui = "*"
 selenium = "*"
 chromedriver-py = "*"
+difpy = "*"
 
 [dev-packages]
 

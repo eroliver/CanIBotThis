@@ -20,6 +20,7 @@ def main():
     third_guess = 'loser'
     fourth_guess = 'quest'
     fifth_guess = 'sorry'
+    sixth_guess = 'midge'
     # import a list of 5 letter words, there's no check on the words, so they need to be 5 letters long
     word_list = import_word_list('all_words.txt')
     # letters that wordle marks grey will be added here
@@ -77,6 +78,8 @@ def main():
 
     letter_boxes = get_letter_locations()
 
+    print(len(word_list))
+
     make_guess(first_guess)
 
     def Check_Correct_Letters(guess):
@@ -101,13 +104,11 @@ def main():
     # update wordlist based on letters not in the word.
     # not sure the best way to do this quickly. checking every word with every letter will be pretty slow.
     word_list = check_words(word_list)
-    print(len(word_list))
 
     word_list = check_letter_positions(word_list, not_in_position)
-    print(len(word_list))
 
     word_list = check_correct_positions(word_list, correct_letters)
-    print(len(word_list))
+    print(f"Possible words after 1 guess: {len(word_list)}")
 
     #if len(word_list) > 0:
     #    second_guess = word_list[randint(0,(len(word_list) - 1))]
@@ -120,7 +121,7 @@ def main():
     word_list = check_letter_positions(word_list, not_in_position)
     word_list = check_correct_positions(word_list, correct_letters)
 
-    print(len(word_list))
+    print(f"Possible words after 2 guesses: {len(word_list)}")
 
     if len(word_list) > 0:
         third_guess = word_list[randint(0,(len(word_list) - 1))]
@@ -133,7 +134,7 @@ def main():
     word_list = check_letter_positions(word_list, not_in_position)
     word_list = check_correct_positions(word_list, correct_letters)
 
-    print(len(word_list))
+    print(f"Possible words after 3 guesses: {len(word_list)}")
 
     if len(word_list) > 0:
         forth_guess = word_list[randint(0,(len(word_list) - 1))]
@@ -146,14 +147,14 @@ def main():
     word_list = check_letter_positions(word_list, not_in_position)
     word_list = check_correct_positions(word_list, correct_letters)
 
-    print(len(word_list))
+    print(f"Possible words after 4 guesses: {len(word_list)}")
 
     if len(word_list) > 0:
         fifth_guess = word_list[randint(0,(len(word_list) - 1))]
     
     make_guess(fifth_guess)
 
-    Check_Correct_Letters(fifth_guess)
+    print(f"Possible words after 5 guesses: {len(word_list)}, fingers = crossed")
 
     word_list = check_words(word_list)
     word_list = check_letter_positions(word_list, not_in_position)
@@ -163,7 +164,7 @@ def main():
         sixth_guess = word_list[randint(0,(len(word_list) - 1))]
 
     make_guess(sixth_guess)
-    print(word_list)
+    print(f"Possible words after 2 guesses: {len(word_list)}, close?")
 
 def make_guess(word_guess):
     typewrite(word_guess, 0.1)
